@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>House of Momos &amp; Noodles | Premium Chinese Restaurant Mysuru</title>
+<meta name="description" content="House of Momos &amp; Noodles — Premium Chinese restaurant in Saraswathipuram, Mysuru. Steamed momos, soups, noodles, rice &amp; more. Order on WhatsApp. 4.4★ rated.">
+<meta name="theme-color" content="#C41230">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self' data:; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src https://fonts.gstatic.com; img-src 'self' data: https:; connect-src https://nominatim.openstreetmap.org https://*.tile.openstreetmap.org; frame-src https://www.google.com;">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Raleway:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- TOAST -->
+<div id="toast"></div>
+<!-- SCROLL TOP -->
+<button id="go-top" aria-label="Back to top">↑</button>
+
+<!-- ══ NAVBAR ══ -->
+<nav id="navbar">
+  <div class="container">
+    <div class="nav-inner">
+      <a class="nav-logo" href="#hero">
+        🥟 <span>HOM<span class="logo-dot">&</span>N</span>
+      </a>
+      <div class="nav-links">
+        <a href="#menu" onclick="goTo('menu');return false">Menu</a>
+        <a href="#order-apps" onclick="goTo('order-apps');return false">Order</a>
+        <a href="#reviews" onclick="goTo('reviews');return false">Reviews</a>
+        <a href="#location" onclick="goTo('location');return false">Hours</a>
+        <a href="#contact" onclick="goTo('contact');return false">Contact</a>
+      </div>
+      <div class="nav-right">
+        <a href="tel:+919448271508" class="btn btn-outline" style="padding:.45rem 1rem;font-size:var(--xs)">📞 Call</a>
+        <button class="cart-fab" onclick="openCart()" aria-label="View cart">
+          🛒 Cart <span id="cbadge"></span>
+        </button>
+        <button class="ham" id="ham" aria-label="Menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- ══ MOBILE NAV ══ -->
+<div id="mob-nav" aria-hidden="true">
+  <a onclick="mobGoTo('hero')">🏠 Home</a>
+  <a onclick="mobGoTo('menu')">📋 Menu</a>
+  <a onclick="mobGoTo('order-apps')">📲 Order</a>
+  <a onclick="mobGoTo('reviews')">⭐ Reviews</a>
+  <a onclick="mobGoTo('location')">🕐 Hours</a>
+  <a onclick="mobGoTo('contact')">📞 Contact</a>
+  <a class="btn btn-wa" id="mob-wa" href="https://wa.me/919448271508" target="_blank" rel="noopener">WhatsApp</a>
+</div>
+
+<!-- ══ HERO ══ -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="container">
+      <div class="hero-inner">
+        <div>
+          <div class="hero-tag">🥟 Premium Chinese Cuisine · Mysuru</div>
+          <h1 class="hero-title">
+            House of<br>
+            <span class="gold">Momos</span> <span class="red">&amp;</span><br>
+            <span class="gold">Noodles</span>
+          </h1>
+          <p class="hero-sub">Authentic flavours of the East — hand-crafted momos, soul-warming soups, wok-tossed noodles &amp; aromatic fried rice. Delivered to your door.</p>
+          <div class="hero-status">
+            <span class="sdot closed" id="sdot"></span>
+            <span id="stext">Checking hours…</span>
+          </div>
+          <div class="hero-btns">
+            <button class="btn btn-wa" id="hero-wa">📲 Order on WhatsApp</button>
+            <button class="btn btn-outline" onclick="goTo('menu')">🍜 View Full Menu</button>
+          </div>
+          <div class="hero-chips">
+            <div class="hchip">⭐ 4.4 Rated</div>
+            <div class="hchip">🥟 Steamed &amp; Fried Momos</div>
+            <div class="hchip">💰 ₹200–₹400</div>
+            <div class="hchip">🚴 Delivery Available</div>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="hero-plate">
+            <div class="hero-emoji-grid">
+              <div class="hem">🥟</div>
+              <div class="hem">🍜</div>
+              <div class="hem">🍚</div>
+              <div class="hem">🍵</div>
+              <div class="hem">🌶️</div>
+              <div class="hem">🥘</div>
+              <div class="hem">🍗</div>
+              <div class="hem">🥦</div>
+              <div class="hem">🥚</div>
+            </div>
+            <div class="hero-rating">
+              <div class="stars">★★★★★</div>
+              <span class="val">4.4</span>
+              <div class="cnt">756 reviews</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FEATURES ══ -->
+<div id="features">
+  <div class="container">
+    <div class="feat-row">
+      <div class="feat-item fade-in">
+        <div class="feat-ico">⭐</div>
+        <div><div class="feat-lbl">Rating</div><div class="feat-val">4.4 · 756 Reviews</div></div>
+      </div>
+      <div class="feat-item fade-in">
+        <div class="feat-ico">🍜</div>
+        <div><div class="feat-lbl">Cuisine</div><div class="feat-val">Chinese · Pan-Asian</div></div>
+      </div>
+      <div class="feat-item fade-in">
+        <div class="feat-ico">💰</div>
+        <div><div class="feat-lbl">Price Range</div><div class="feat-val">₹200 – ₹400</div></div>
+      </div>
+      <div class="feat-item fade-in">
+        <div class="feat-ico">🕐</div>
+        <div id="hrs-status"><div class="feat-lbl">Status</div><div class="feat-val">Checking…</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ MENU ══ -->
+<section id="menu">
+  <div class="container">
+    <h2 class="section-title fade-in">Our Menu</h2>
+    <p class="section-sub fade-in">Authentic flavours, hand-crafted with love</p>
+    <div class="section-divider fade-in"><span class="sdiv-icon">🥟</span></div>
+
+    <!-- Search -->
+    <div class="menu-search-wrap fade-in">
+      <input type="text" id="menu-search" placeholder="Search momos, noodles, soups…" oninput="handleMenuSearch(this.value)" autocomplete="off" aria-label="Search menu">
+      <button class="search-clear-btn" id="search-clear" onclick="clearMenuSearch()" aria-label="Clear search">✕</button>
+      <span class="search-icon">🔍</span>
+    </div>
+
+    <!-- Search results -->
+    <div id="search-results-section">
+      <div class="search-meta">
+        <span class="search-count-lbl" id="search-count"></span>
+        <span class="search-query-lbl" id="search-query-label"></span>
+      </div>
+      <div class="menu-grid" id="search-results-grid"></div>
+      <div id="search-empty" style="display:none">
+        <div class="sem-ico">🥟</div>
+        <p>No items found. Try another search!</p>
+      </div>
+    </div>
+
+    <!-- Tabs + Categories -->
+    <div id="tabs-area">
+      <div class="tab-bar" role="tablist">
+        <button class="tab active" role="tab" onclick="switchTab(this,'momos')">🥟 Dimsums</button>
+        <button class="tab" role="tab" onclick="switchTab(this,'soups')">🍵 Soups</button>
+        <button class="tab" role="tab" onclick="switchTab(this,'starters')">🌶️ Starters</button>
+        <button class="tab" role="tab" onclick="switchTab(this,'noodles')">🍜 Noodles</button>
+        <button class="tab" role="tab" onclick="switchTab(this,'rice')">🍚 Rice</button>
+        <button class="tab" role="tab" onclick="switchTab(this,'chopsuey')">🥘 Chopsuey</button>
+      </div>
+
+      <div id="cat-momos" class="cat active">
+        <div class="cat-header"><div class="cat-title">Dimsums / Momos</div><div class="cat-line"></div></div>
+        <div class="menu-grid" id="grid-momos"></div>
+      </div>
+      <div id="cat-soups" class="cat">
+        <div class="cat-header"><div class="cat-title">Soups</div><div class="cat-line"></div></div>
+        <div class="menu-grid" id="grid-soups"></div>
+      </div>
+      <div id="cat-starters" class="cat">
+        <div class="cat-header"><div class="cat-title">Starters</div><div class="cat-line"></div></div>
+        <div class="menu-grid" id="grid-starters"></div>
+      </div>
+      <div id="cat-noodles" class="cat">
+        <div class="cat-header"><div class="cat-title">Noodles</div><div class="cat-line"></div></div>
+        <div class="menu-grid" id="grid-noodles"></div>
+      </div>
+      <div id="cat-rice" class="cat">
+        <div class="cat-header"><div class="cat-title">Rice</div><div class="cat-line"></div></div>
+        <div class="menu-grid" id="grid-rice"></div>
+      </div>
+      <div id="cat-chopsuey" class="cat">
+        <div class="cat-header"><div class="cat-title">Chopsuey</div><div class="cat-line"></div></div>
+        <div class="menu-grid" id="grid-chopsuey"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ ORDER APPS ══ -->
+<section id="order-apps">
+  <div class="container">
+    <div class="apps-card fade-in">
+      <h2 class="apps-title">Ready to Order?</h2>
+      <p class="apps-sub">Order directly on WhatsApp or find us on delivery platforms</p>
+      <div class="apps-btns">
+        <a class="app-btn wa" id="nav-wa" href="#" onclick="waOpen();return false">📲 Order on WhatsApp</a>
+        <a class="app-btn zo" href="https://www.zomato.com" target="_blank" rel="noopener noreferrer">🍽️ Find on Zomato</a>
+        <button class="app-btn sw" id="swiggy-btn">🛵 Find on Swiggy</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ WHY US ══ -->
+<section id="why">
+  <div class="container">
+    <h2 class="section-title fade-in">Why Choose Us</h2>
+    <div class="section-divider fade-in"><span class="sdiv-icon">🌟</span></div>
+    <div class="why-grid">
+      <div class="why-card fade-in">
+        <div class="why-ico">🥟</div>
+        <div class="why-title">Hand-Crafted Momos</div>
+        <p class="why-desc">Every dumpling is hand-folded fresh daily using premium ingredients and authentic spice blends.</p>
+      </div>
+      <div class="why-card fade-in">
+        <div class="why-ico">🔥</div>
+        <div class="why-title">Wok-Fired Perfection</div>
+        <p class="why-desc">Our noodles and rice are tossed in a blazing wok for that signature smoky wok hei flavour.</p>
+      </div>
+      <div class="why-card fade-in">
+        <div class="why-ico">🌿</div>
+        <div class="why-title">Fresh Every Day</div>
+        <p class="why-desc">We source fresh vegetables and quality ingredients daily — never frozen, always fresh.</p>
+      </div>
+      <div class="why-card fade-in">
+        <div class="why-ico">📲</div>
+        <div class="why-title">Easy WhatsApp Orders</div>
+        <p class="why-desc">Order directly on WhatsApp for a fast, personal experience with instant confirmation.</p>
+      </div>
+      <div class="why-card fade-in">
+        <div class="why-ico">🛵</div>
+        <div class="why-title">Quick Delivery</div>
+        <p class="why-desc">Fast home delivery within 5 km of Saraswathipuram so your food arrives hot.</p>
+      </div>
+      <div class="why-card fade-in">
+        <div class="why-ico">💰</div>
+        <div class="why-title">Great Value</div>
+        <p class="why-desc">Premium Chinese cuisine at honest prices — ₹200 to ₹400 for a satisfying meal.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ REVIEWS ══ -->
+<section id="reviews">
+  <div class="container">
+    <h2 class="section-title fade-in">What Guests Say</h2>
+    <div class="section-divider fade-in"><span class="sdiv-icon">⭐</span></div>
+    <div class="reviews-hero fade-in">
+      <div class="rating-big">
+        <div class="rating-num">4.4</div>
+        <div class="rating-stars">★★★★½</div>
+        <div class="rating-cnt">Based on 756 reviews</div>
+      </div>
+      <div class="reviews-grid">
+        <div class="rev-card fade-in">
+          <div class="rev-stars">★★★★★</div>
+          <p class="rev-text">"The chicken momos are absolutely incredible. Best I've had in Mysuru — juicy filling, perfect thin skin."</p>
+          <div class="rev-name">Priya K.</div>
+        </div>
+        <div class="rev-card fade-in">
+          <div class="rev-stars">★★★★★</div>
+          <p class="rev-text">"Schezwan noodles have that perfect fiery kick. The portions are generous and prices are very reasonable!"</p>
+          <div class="rev-name">Rahul M.</div>
+        </div>
+        <div class="rev-card fade-in">
+          <div class="rev-stars">★★★★☆</div>
+          <p class="rev-text">"Tomyum soup was authentic and warming. The fried wontons are addictive. Highly recommend!"</p>
+          <div class="rev-name">Sneha D.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ LOCATION & HOURS ══ -->
+<section id="location">
+  <div class="container">
+    <h2 class="section-title fade-in">Find Us &amp; Our Hours</h2>
+    <div class="section-divider fade-in"><span class="sdiv-icon">📍</span></div>
+    <div class="loc-grid fade-in">
+      <div>
+        <h3 style="font-family:var(--fd);color:var(--cgl);margin-bottom:1.25rem;letter-spacing:.06em">Opening Hours</h3>
+        <table class="hours-table">
+          <tr><td>Monday</td><td><span style="color:#ff6b7a">Closed</span></td></tr>
+          <tr><td>Tuesday</td><td>11:30 am – 3:30 pm &amp; 6 – 10 pm</td></tr>
+          <tr><td>Wednesday</td><td>11:30 am – 3:30 pm &amp; 6 – 10 pm</td></tr>
+          <tr><td>Thursday</td><td>11:30 am – 3:30 pm &amp; 6 – 10 pm</td></tr>
+          <tr><td>Friday</td><td>11:30 am – 3:30 pm &amp; 6 – 10 pm</td></tr>
+          <tr><td>Saturday</td><td>11:30 am – 3:30 pm &amp; 6 – 10 pm</td></tr>
+          <tr><td>Sunday</td><td>11:30 am – 3:30 pm &amp; 6 – 10 pm</td></tr>
+        </table>
+        <p style="margin-top:1rem;font-size:var(--xs);color:var(--ctm)">* Lunch 11:30am–3:30pm · Dinner 6pm–10pm</p>
+      </div>
+      <div>
+        <h3 style="font-family:var(--fd);color:var(--cgl);margin-bottom:1.25rem;letter-spacing:.06em">Location</h3>
+        <div class="map-embed">
+          <div class="map-placeholder">
+            <div class="mp-ico">📍</div>
+            <p style="font-size:var(--sm);color:var(--ct);font-weight:600">Saraswathipuram, Mysuru</p>
+            <p style="font-size:var(--xs)">Karnataka 570009</p>
+            <a class="map-link" href="https://maps.google.com/?q=12.3022,76.6295" target="_blank" rel="noopener">
+              🗺️ Open in Google Maps
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CONTACT ══ -->
+<section id="contact">
+  <div class="container">
+    <h2 class="section-title fade-in">Get in Touch</h2>
+    <div class="section-divider fade-in"><span class="sdiv-icon">📞</span></div>
+    <div class="ct-grid fade-in">
+      <div>
+        <div class="ct-item">
+          <span class="ct-ico">📍</span>
+          <div><div class="ct-lbl">Address</div><div class="ct-val">Saraswathipuram, Mysuru, Karnataka 570009</div></div>
+        </div>
+        <div class="ct-item">
+          <span class="ct-ico">📲</span>
+          <div><div class="ct-lbl">WhatsApp / Phone</div><div class="ct-val">+91 94482 71508</div></div>
+        </div>
+        <div class="ct-item">
+          <span class="ct-ico">🕐</span>
+          <div><div class="ct-lbl">Hours</div><div class="ct-val">Tue–Sun · 11:30 AM – 3:30 PM &amp; 6 PM – 10 PM<br><span style="color:#ff6b7a;font-size:.75rem">Monday Closed</span></div></div>
+        </div>
+      </div>
+      <div class="ct-form fade-in">
+        <h3 class="ct-form-title">Send a Message</h3>
+        <div class="fg"><label for="ct-name">Your Name</label><input type="text" id="ct-name" placeholder="Your name"></div>
+        <div class="fg"><label for="ct-msg">Message</label><textarea id="ct-msg" rows="4" placeholder="Type your enquiry here…"></textarea></div>
+        <button class="send-btn" onclick="sendWA()">Send via WhatsApp 📲</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="container">
+    <div class="foot-inner">
+      <div class="foot-logo">🥟 HOUSE OF MOMOS &amp; NOODLES</div>
+      <div class="foot-links">
+        <a onclick="goTo('menu');return false" href="#">Menu</a>
+        <a onclick="goTo('order-apps');return false" href="#">Order</a>
+        <a onclick="goTo('location');return false" href="#">Hours</a>
+        <a onclick="goTo('contact');return false" href="#">Contact</a>
+      </div>
+    </div>
+    <div class="foot-copy">© 2025 House of Momos &amp; Noodles · Saraswathipuram, Mysuru · All Rights Reserved</div>
+  </div>
+</footer>
+
+<!-- ══ CART PANEL ══ -->
+<div id="cart-overlay" onclick="closeCart()"></div>
+<div id="cart-panel" role="dialog" aria-modal="true" aria-label="Your order" aria-hidden="true">
+  <div class="chdr">
+    <h2>🛒 Your Order</h2>
+    <button class="cclose" onclick="closeCart()" aria-label="Close cart">✕</button>
+  </div>
+  <div class="cbody" id="cbody"></div>
+  <div class="cftr" id="cftr" style="display:none">
+    <div class="ctotal"><span>Total</span><span class="ctotal-amt" id="ctotal">₹0</span></div>
+    <div class="fg">
+      <label for="cname">Your Name *</label>
+      <input type="text" id="cname" placeholder="Enter your name" autocomplete="name">
+      <div class="ferr" id="err-name">Please enter your name</div>
+    </div>
+    <div class="fg">
+      <label for="cphone">Phone Number *</label>
+      <input type="tel" id="cphone" placeholder="10-digit mobile number" maxlength="10">
+      <div class="ferr" id="err-phone">Please enter a valid mobile number</div>
+    </div>
+    <!-- LOCATION -->
+    <div class="fg">
+      <label>Delivery Location *</label>
+      <button type="button" class="loc-detect-main" id="loc-btn" onclick="detectLocation()" aria-label="Detect my location">
+        <svg id="loc-btn-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/>
+          <circle cx="12" cy="12" r="9" stroke-dasharray="3 3"/>
+        </svg>
+        <span id="loc-btn-txt">📍 Tap to Detect My Location</span>
+      </button>
+      <div id="loc-addr-display" class="loc-addr-display">Tap the button above or drag the map pin</div>
+      <div class="ferr" id="err-addr">Please detect your location first</div>
+    </div>
+    <!-- Map -->
+    <div class="map-box">
+      <div class="map-box-hint">📌 Tap map or drag pin to set exact location</div>
+      <div id="map-picker"></div>
+    </div>
+    <!-- Building name -->
+    <div class="fg" style="margin-top:.65rem">
+      <label for="cbuild">Building / Apartment Name</label>
+      <input type="text" id="cbuild" placeholder="e.g. Sunrise Apartments, Green Villa" autocomplete="address-line2">
+    </div>
+    <!-- Flat/house no -->
+    <div class="fg">
+      <label for="caddr">Flat / House No. &amp; Floor *</label>
+      <input type="text" id="caddr" placeholder="e.g. Flat 12, 2nd Floor" autocomplete="street-address">
+      <div class="ferr" id="err-addr2">Please add flat / house number</div>
+    </div>
+    <!-- Distance -->
+    <div id="dist-badge" class="pending" role="status" aria-live="polite">📍 Move the pin to your location</div>
+    <div class="no-delivery-msg" id="no-delivery-msg">🚫 Outside delivery range (5 km). Please visit us.</div>
+  </div>
+  <!-- PLACE ORDER -->
+  <div class="cart-order-bar" id="cart-order-bar" style="display:none">
+    <div class="payinfo">💳 Payment: Cash on Delivery</div>
+    <button class="place-btn" onclick="placeOrder()">📲 Place Order on WhatsApp</button>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script src="menu.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
