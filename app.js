@@ -194,17 +194,21 @@ function mobGoTo(id){
 // ── MOBILE NAV ──
 function closeMobNav(){
   var nav=document.getElementById('mob-nav'),ham=document.getElementById('ham');
+  var ov=document.getElementById('mob-overlay');
   if(nav){nav.classList.remove('open');nav.setAttribute('aria-hidden','true');}
   if(ham){ham.classList.remove('open');ham.setAttribute('aria-expanded','false');}
+  if(ov)ov.classList.remove('show');
 }
 function initMobNav(){
   var ham=document.getElementById('ham'),nav=document.getElementById('mob-nav');
+  var ov=document.getElementById('mob-overlay');
   if(!ham||!nav)return;
   ham.addEventListener('click',function(){
     var isOpen=nav.classList.toggle('open');
     ham.classList.toggle('open',isOpen);
     ham.setAttribute('aria-expanded',isOpen);
     nav.setAttribute('aria-hidden',!isOpen);
+    if(ov)ov.classList.toggle('show',isOpen);
   });
 }
 
@@ -483,6 +487,27 @@ function _initMap(){
   setTimeout(function(){_map.invalidateSize();},500);
 }
 
+/* ── Location section map (static, shows restaurant pin) ── */
+var _locMapInit = false;
+function initLocationMap(){
+  if(_locMapInit)return;
+  var el=document.getElementById('map-location');
+  if(!el||typeof L==='undefined')return;
+  _locMapInit=true;
+  var lmap=L.map('map-location',{zoomControl:true,attributionControl:false,scrollWheelZoom:false})
+             .setView([RESTAURANT.lat,RESTAURANT.lng],16);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19}).addTo(lmap);
+  L.marker([RESTAURANT.lat,RESTAURANT.lng],{
+    icon:L.divIcon({
+      html:'<div style="font-size:2.2rem;filter:drop-shadow(0 3px 8px rgba(0,0,0,.5))">&#127978;</div>',
+      className:'',iconAnchor:[16,36]
+    }),
+    title:'House of Momos & Noodles'
+  }).addTo(lmap).bindPopup('<b>House of Momos &amp; Noodles</b><br>Saraswathipuram, Mysuru 570009').openPopup();
+  setTimeout(function(){lmap.invalidateSize();},100);
+}
+
+
 function detectLocation(){
   if(detectLocation._busy)return;
   detectLocation._busy=true;
@@ -606,5 +631,26 @@ document.addEventListener('DOMContentLoaded', function() {
         window.scrollTo({ top: 0, behavior: 'smooth' });
       });
     }
+  } catch(e) {}
+
+  /* Location map — init when section scrolls into view */
+  try {
+    var locEl = document.getElementById('map-location');
+    if (locEl && window.IntersectionObserver) {
+      var locObs = new IntersectionObserver(function(entries) {
+        entries.forEach(function(e) {
+          if (e.isIntersecting) { initLocationMap(); locObs.disconnect(); }
+        });
+      }, { threshold: 0.1 });
+      locObs.observe(locEl);
+    } else {
+      setTimeout(initLocationMap, 1000);
+    }
+  } catch(e) {}
+
+  /* Mobile nav overlay */
+  try {
+    var mobOv = document.getElementById('mob-overlay');
+    if (mobOv) mobOv.addEventListener('click', closeMobNav);
   } catch(e) {}
 });
