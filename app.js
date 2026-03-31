@@ -642,7 +642,7 @@ document.addEventListener('DOMContentLoaded', function() {
           if (e.isIntersecting) { initLocationMap(); locObs.disconnect(); }
         });
       }, { threshold: 0.1 });
-      locObs.observe(locEl); 
+      locObs.observe(locEl);
     } else {
       setTimeout(initLocationMap, 1000);
     }
