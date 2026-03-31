@@ -13,7 +13,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
 <link rel="stylesheet" href="style.css">
 </head>
-<body> 
+<body>
 <div id="toast"></div>
 <button id="go-top" aria-label="Back to top">&#8679;</button>
 
@@ -66,6 +66,7 @@
   <div class="hero-img-wrap">
     <img src="https://raw.githubusercontent.com/chiranjitchakma/House.of.Momos/main/house%20of%20momos%20front%20image.jpg"
          alt="House of Momos restaurant front" class="hero-img"
+         loading="eager" fetchpriority="high"
          onerror="this.style.display='none';document.querySelector('.hero-img-fallback').style.display='flex'">
     <div class="hero-img-fallback" style="display:none">&#127978;</div>
     <div class="hero-overlay"></div>
@@ -155,23 +156,60 @@
 <!-- GALLERY -->
 <section id="gallery">
   <div class="container">
-    <div class="sec-head fade-in">
+    <div class="sec-head">
       <div class="sec-label">Gallery</div>
       <h2 class="sec-title">Explore Our Food</h2>
       <p class="sec-sub">Fresh, bold flavours — every plate tells a story</p>
     </div>
-    <div class="gallery-grid fade-in">
-      <div class="gal-item gal-big">
-        <img src="https://raw.githubusercontent.com/chiranjitchakma/House.of.Momos/main/house%20of%20momos%20front%20image.jpg"
-             alt="House of Momos restaurant"
-             onerror="this.parentElement.classList.add('gal-fallback')">
-        <div class="gal-overlay"><span>Our Restaurant</span></div>
+    <div class="gallery-grid">
+      <div class="gal-item gi-momos">
+        <div class="gi-inner">
+          <div class="gi-emoji">&#129399;</div>
+          <div class="gi-name">Dimsums &amp; Momos</div>
+          <div class="gi-sub">Steamed &middot; Fried &middot; 6 varieties</div>
+        </div>
+        <div class="gal-overlay"><span>Steamed &amp; Fried Momos</span></div>
       </div>
-      <div class="gal-item gal-emoji" style="--ec:'&#129399;'"><div class="ge">&#129399;</div><div class="gal-overlay"><span>Steamed Momos</span></div></div>
-      <div class="gal-item gal-emoji" style="--ec:'&#127837;'"><div class="ge">&#127837;</div><div class="gal-overlay"><span>Wok Noodles</span></div></div>
-      <div class="gal-item gal-emoji gal-wide" style="--ec:'&#127861;'"><div class="ge">&#127861;</div><div class="gal-overlay"><span>Signature Soups</span></div></div>
-      <div class="gal-item gal-emoji" style="--ec:'&#127798;'"><div class="ge">&#127798;</div><div class="gal-overlay"><span>Crispy Starters</span></div></div>
-      <div class="gal-item gal-emoji" style="--ec:'&#127834;'"><div class="ge">&#127834;</div><div class="gal-overlay"><span>Fried Rice</span></div></div>
+      <div class="gal-item gi-noodles">
+        <div class="gi-inner">
+          <div class="gi-emoji">&#127837;</div>
+          <div class="gi-name">Wok Noodles</div>
+          <div class="gi-sub">Schezwan &middot; Shanghai &middot; Pan Fried</div>
+        </div>
+        <div class="gal-overlay"><span>Wok-Fired Noodles</span></div>
+      </div>
+      <div class="gal-item gi-soups">
+        <div class="gi-inner">
+          <div class="gi-emoji">&#127861;</div>
+          <div class="gi-name">Signature Soups</div>
+          <div class="gi-sub">Manchow &middot; Tomyum &middot; Hot &amp; Sour</div>
+        </div>
+        <div class="gal-overlay"><span>Soul-Warming Soups</span></div>
+      </div>
+      <div class="gal-item gi-starters">
+        <div class="gi-inner">
+          <div class="gi-emoji">&#127798;</div>
+          <div class="gi-name">Crispy Starters</div>
+          <div class="gi-sub">Manchurian &middot; Chilly &middot; Lollipop</div>
+        </div>
+        <div class="gal-overlay"><span>Crispy Starters</span></div>
+      </div>
+      <div class="gal-item gi-rice">
+        <div class="gi-inner">
+          <div class="gi-emoji">&#127834;</div>
+          <div class="gi-name">Fried Rice</div>
+          <div class="gi-sub">Schezwan &middot; Triple &middot; Steam Rice</div>
+        </div>
+        <div class="gal-overlay"><span>Aromatic Fried Rice</span></div>
+      </div>
+      <div class="gal-item gi-chopsuey">
+        <div class="gi-inner">
+          <div class="gi-emoji">&#127848;</div>
+          <div class="gi-name">Chopsuey</div>
+          <div class="gi-sub">American &middot; Chinese &middot; Dragon</div>
+        </div>
+        <div class="gal-overlay"><span>Signature Chopsuey</span></div>
+      </div>
     </div>
   </div>
 </section>
