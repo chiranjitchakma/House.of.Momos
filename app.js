@@ -72,20 +72,23 @@ function renderMenus(){
   Object.keys(MENU).forEach(function(cat){
     var g=document.getElementById('grid-'+cat);
     if(!g)return;
-    g.innerHTML=MENU[cat].map(function(item){
+    g.innerHTML=MENU[cat].map(function(item,idx){
       var q=cart[item.n]?cart[item.n].q:0;
-      return '<article class="mcard fade-in">'+
-        '<div class="mcb">'+
-        (item.best?'<span class="badge badge-amber">⭐ Best</span>':'')+
-        (item.limited?'<span class="badge badge-red">📅 Mon/Wed/Fri</span>':'')+
+      return '<div class="mrow">'+
+        '<div class="mrow-num">'+(idx+1)+'</div>'+
+        '<div class="mrow-mid">'+
+          '<div class="mrow-top">'+
+            '<span class="mrow-name">'+esc(item.n)+'</span>'+
+            (item.best?'<span class="badge badge-amber">⭐ Best</span>':'')+
+            (item.limited?'<span class="badge badge-red">Mon/Wed/Fri</span>':'')+
+          '</div>'+
+          (item.d?'<div class="mrow-desc">'+esc(item.d)+'</div>':'')+
         '</div>'+
-        '<div class="memo">'+item.e+'</div>'+
-        '<div class="mname">'+esc(item.n)+'</div>'+
-        '<div class="mdesc">'+(item.d?esc(item.d):'')+'</div>'+
-        '<div class="mfoot">'+
-        '<span class="mprice">₹'+item.p+'</span>'+
-        '<div id="cc-'+cid(item.n)+'">'+ctrlHTML(item.n,item.p,q)+'</div>'+
-        '</div></article>';
+        '<div class="mrow-right">'+
+          '<div class="mrow-price">₹'+item.p+'</div>'+
+          '<div id="cc-'+cid(item.n)+'">'+ctrlHTML(item.n,item.p,q)+'</div>'+
+        '</div>'+
+      '</div>';
     }).join('');
   });
 }
@@ -302,23 +305,25 @@ function _runSearch(q) {
   if (empty) empty.style.display = 'none';
   if (!grid) return;
 
-  grid.innerHTML = results.map(function(r) {
+  grid.innerHTML = results.map(function(r, idx) {
     var item = r.item;
     var q2 = cart[item.n] ? cart[item.n].q : 0;
     var hilName = _highlight(esc(item.n), esc(q));
     var hilDesc = item.d ? _highlight(esc(item.d), esc(q)) : '';
-    return '<article class="mcard">' +
-      '<div class="mcb">' +
-      (item.best ? '<span class="badge badge-amber">⭐ Best</span>' : '') +
-      (item.limited ? '<span class="badge badge-red">📅 Mon/Wed/Fri</span>' : '') +
+    return '<div class="mrow">' +
+      '<div class="mrow-num">' + item.e + '</div>' +
+      '<div class="mrow-mid">' +
+        '<div class="mrow-top">' +
+          '<span class="mrow-name">' + hilName + '</span>' +
+          (item.best ? '<span class="badge badge-amber">⭐ Best</span>' : '') +
+        '</div>' +
+        (hilDesc ? '<div class="mrow-desc">' + hilDesc + '</div>' : '') +
       '</div>' +
-      '<div class="memo">' + item.e + '</div>' +
-      '<div class="mname">' + hilName + '</div>' +
-      '<div class="mdesc">' + hilDesc + '</div>' +
-      '<div class="mfoot">' +
-      '<span class="mprice">₹' + item.p + '</span>' +
-      '<div id="src-' + cid(item.n) + '">' + ctrlHTML(item.n, item.p, q2) + '</div>' +
-      '</div></article>';
+      '<div class="mrow-right">' +
+        '<div class="mrow-price">₹' + item.p + '</div>' +
+        '<div id="src-' + cid(item.n) + '">' + ctrlHTML(item.n, item.p, q2) + '</div>' +
+      '</div>' +
+    '</div>';
   }).join('');
 }
 
