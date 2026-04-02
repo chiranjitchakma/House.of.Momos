@@ -31,7 +31,7 @@
         <a onclick="goTo('order-apps');return false" href="#">Order</a>
         <a onclick="goTo('reviews');return false" href="#">Reviews</a>
         <a onclick="goTo('location');return false" href="#">Find Us</a>
-        <a href="tel:+919448271508">+91 94482 71508</a>
+        <a href="tel:+919448271508" class="nav-contact-icon" title="Call Us" aria-label="Call us">&#9742;</a>
       </div>
       <div class="nav-right">
         <button class="cart-fab" onclick="openCart()" aria-label="Cart">
@@ -70,6 +70,7 @@
          onerror="this.style.display='none';document.querySelector('.hero-img-fallback').style.display='flex'">
     <div class="hero-img-fallback" style="display:none">&#127978;</div>
     <div class="hero-overlay"></div>
+    <div class="hero-gradient-top"></div>
   </div>
   <div class="hero-content container">
     <div class="hero-badge">
@@ -158,57 +159,51 @@
   <div class="container">
     <div class="sec-head">
       <div class="sec-label">Gallery</div>
-      <h2 class="sec-title">Explore Our Food</h2>
-      <p class="sec-sub">Fresh, bold flavours — every plate tells a story</p>
+      <h2 class="sec-title">Inside Our World</h2>
+      <p class="sec-sub">The restaurant, the ambiance, the food — see it all</p>
     </div>
     <div class="gallery-grid">
-      <div class="gal-item gi-momos">
-        <div class="gi-inner">
-          <div class="gi-emoji">&#129399;</div>
-          <div class="gi-name">Dimsums &amp; Momos</div>
-          <div class="gi-sub">Steamed &middot; Fried &middot; 6 varieties</div>
-        </div>
-        <div class="gal-overlay"><span>Steamed &amp; Fried Momos</span></div>
+      <div class="gal-item gal-wide">
+        <img src="https://raw.githubusercontent.com/chiranjitchakma/House.of.Momos/main/house%20of%20momos%20front%20image.jpg"
+             alt="House of Momos restaurant front"
+             loading="lazy"
+             onerror="this.closest('.gal-item').classList.add('gal-err')">
+        <div class="gal-caption">Our Restaurant</div>
       </div>
-      <div class="gal-item gi-noodles">
-        <div class="gi-inner">
-          <div class="gi-emoji">&#127837;</div>
-          <div class="gi-name">Wok Noodles</div>
-          <div class="gi-sub">Schezwan &middot; Shanghai &middot; Pan Fried</div>
-        </div>
-        <div class="gal-overlay"><span>Wok-Fired Noodles</span></div>
+      <div class="gal-item">
+        <img src="https://raw.githubusercontent.com/chiranjitchakma/House.of.Momos/main/inside%201.webp"
+             alt="Inside House of Momos 1"
+             loading="lazy"
+             onerror="this.closest('.gal-item').classList.add('gal-err')">
+        <div class="gal-caption">Dining Area</div>
       </div>
-      <div class="gal-item gi-soups">
-        <div class="gi-inner">
-          <div class="gi-emoji">&#127861;</div>
-          <div class="gi-name">Signature Soups</div>
-          <div class="gi-sub">Manchow &middot; Tomyum &middot; Hot &amp; Sour</div>
-        </div>
-        <div class="gal-overlay"><span>Soul-Warming Soups</span></div>
+      <div class="gal-item">
+        <img src="https://raw.githubusercontent.com/chiranjitchakma/House.of.Momos/main/inside%202.webp"
+             alt="Inside House of Momos 2"
+             loading="lazy"
+             onerror="this.closest('.gal-item').classList.add('gal-err')">
+        <div class="gal-caption">The Ambiance</div>
       </div>
-      <div class="gal-item gi-starters">
-        <div class="gi-inner">
-          <div class="gi-emoji">&#127798;</div>
-          <div class="gi-name">Crispy Starters</div>
-          <div class="gi-sub">Manchurian &middot; Chilly &middot; Lollipop</div>
-        </div>
-        <div class="gal-overlay"><span>Crispy Starters</span></div>
+      <div class="gal-item">
+        <img src="https://raw.githubusercontent.com/chiranjitchakma/House.of.Momos/main/inside%203.webp"
+             alt="Inside House of Momos 3"
+             loading="lazy"
+             onerror="this.closest('.gal-item').classList.add('gal-err')">
+        <div class="gal-caption">Our Space</div>
       </div>
-      <div class="gal-item gi-rice">
-        <div class="gi-inner">
-          <div class="gi-emoji">&#127834;</div>
-          <div class="gi-name">Fried Rice</div>
-          <div class="gi-sub">Schezwan &middot; Triple &middot; Steam Rice</div>
-        </div>
-        <div class="gal-overlay"><span>Aromatic Fried Rice</span></div>
+      <div class="gal-item">
+        <img src="https://raw.githubusercontent.com/chiranjitchakma/House.of.Momos/main/inside%204.webp"
+             alt="Inside House of Momos 4"
+             loading="lazy"
+             onerror="this.closest('.gal-item').classList.add('gal-err')">
+        <div class="gal-caption">Cozy Corner</div>
       </div>
-      <div class="gal-item gi-chopsuey">
-        <div class="gi-inner">
-          <div class="gi-emoji">&#127848;</div>
-          <div class="gi-name">Chopsuey</div>
-          <div class="gi-sub">American &middot; Chinese &middot; Dragon</div>
-        </div>
-        <div class="gal-overlay"><span>Signature Chopsuey</span></div>
+      <div class="gal-item">
+        <img src="https://raw.githubusercontent.com/chiranjitchakma/House.of.Momos/main/inside%205.webp"
+             alt="Inside House of Momos 5"
+             loading="lazy"
+             onerror="this.closest('.gal-item').classList.add('gal-err')">
+        <div class="gal-caption">Seating Area</div>
       </div>
     </div>
   </div>
@@ -395,21 +390,43 @@
 <!-- FOOTER -->
 <footer>
   <div class="container">
-    <div class="foot-grid">
-      <div>
+    <div class="foot-main">
+      <div class="foot-brand">
         <div class="foot-logo">&#129399; House of Momos &amp; Noodles</div>
-        <p class="foot-tagline">Authentic Chinese · Saraswathipuram, Mysuru</p>
-        <div class="foot-rating">&#9733;&#9733;&#9733;&#9733;&#9733; 4.4 &nbsp;&middot;&nbsp; 756 reviews</div>
+        <p class="foot-tagline">Authentic Chinese cuisine crafted with love.<br>Hand-folded momos, wok noodles &amp; bold soups.</p>
+        <div class="foot-stars">&#9733;&#9733;&#9733;&#9733;&#9733; <strong>4.4</strong> &nbsp;&middot;&nbsp; 756 Google Reviews</div>
+        <div class="foot-social">
+          <a href="https://wa.me/919448271508" target="_blank" rel="noopener" class="fsoc-btn fsoc-wa">&#128241; WhatsApp</a>
+          <a href="https://www.zomato.com/mysore/house-of-momos-noodles-kuvempunagar" target="_blank" rel="noopener" class="fsoc-btn fsoc-zo">&#127869; Zomato</a>
+        </div>
       </div>
-      <div class="foot-links">
+      <div class="foot-col">
+        <div class="foot-col-title">Navigate</div>
         <a onclick="goTo('menu');return false" href="#">Menu</a>
         <a onclick="goTo('gallery');return false" href="#">Gallery</a>
         <a onclick="goTo('order-apps');return false" href="#">Order</a>
+        <a onclick="goTo('reviews');return false" href="#">Reviews</a>
         <a onclick="goTo('location');return false" href="#">Find Us</a>
         <a onclick="goTo('contact');return false" href="#">Contact</a>
       </div>
+      <div class="foot-col">
+        <div class="foot-col-title">Hours</div>
+        <div class="foot-hours">
+          <span class="fh-closed">Monday</span><span class="fh-val fh-closed">Closed</span>
+          <span>Tue – Sun</span><span class="fh-val">11:30 am – 3:30 pm</span>
+          <span></span><span class="fh-val">6:00 pm – 10:00 pm</span>
+        </div>
+        <div class="foot-col-title" style="margin-top:1.25rem">Contact</div>
+        <a href="tel:+919448271508" class="foot-phone">&#9742; +91 94482 71508</a>
+        <div class="foot-addr">&#128205; Saraswathipuram<br>Mysuru, Karnataka 570009</div>
+      </div>
     </div>
-    <div class="foot-copy">&copy; 2025 House of Momos &amp; Noodles &nbsp;&middot;&nbsp; All Rights Reserved &nbsp;&middot;&nbsp; Mysuru, Karnataka</div>
+    <div class="foot-bottom">
+      <div class="foot-copy">&copy; 2025 House of Momos &amp; Noodles. All rights reserved.</div>
+      <div class="foot-bottom-links">
+        <a onclick="goTo('hero');return false" href="#">Back to Top &#8679;</a>
+      </div>
+    </div>
   </div>
 </footer>
 
@@ -455,7 +472,7 @@
       <div class="ferr" id="err-addr2">Please add flat / house number</div>
     </div>
     <div id="dist-badge" class="dist-badge pending">&#128205; Move pin to your location</div>
-    <div class="no-delivery-msg" id="no-delivery-msg">&#128683; Outside 5 km delivery range</div> 
+    <div class="no-delivery-msg" id="no-delivery-msg">&#128683; Outside 5 km delivery range</div>
   </div>
   <div class="cart-order-bar" id="cart-order-bar" style="display:none">
     <div class="payinfo">&#128179; Cash on Delivery</div>
